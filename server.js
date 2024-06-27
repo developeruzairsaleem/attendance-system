@@ -1,3 +1,35 @@
+const express = require("express")
+const bodyParser = require("body-parser");
+const connectToDB = require("./database/index")
+const {PORT} = require("./config/index")
+const app = express();
+connectToDB();
+
+
+
+
+
+
+app.use(bodyParser.json());
+
+
+
+app.get("/",(req,res)=>{
+    
+    console.log(req.body);
+    res.status(200).json({
+        data:"ITS WORKING!!!"
+    })
+})
+
+
+
+
+app.listen(PORT,()=>{
+    console.log("app is listening on port: "+PORT)
+})
+
+
 //  Complete in 7 Days Frontend (React.js)
 
 
@@ -43,7 +75,8 @@
 //--------------------------------------------------------------
 
 
-//   Database ////(MongoDB) Collections
+//   Database 
+//   (MongoDB) Collections
 //    Users: Store user information and attendance data. 
 //    Attendance: Record daily attendance. 
 //    LeaveRequests: Track leave requests. 
